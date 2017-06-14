@@ -1,4 +1,4 @@
-package akka.http.actuator
+package akka.http.actuate
 
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer

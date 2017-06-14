@@ -1,8 +1,8 @@
-package akka.http.actuator.rest
+package akka.http.actuate.rest
 
 import akka.actor.ActorRef
-import akka.http.actuator.AkkaImplicits
-import akka.http.actuator.health.{GetHealth, Health, HealthActor, Status}
+import akka.http.actuate.AkkaImplicits
+import akka.http.actuate.health.{GetHealth, Health, HealthActor}
 import akka.http.rest.hal.ResourceBuilder
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import akka.http.scaladsl.server.Directives.{complete, path}
@@ -31,9 +31,10 @@ trait HealthAdapter extends DefaultJsonProtocol {
     Map("status" -> health.status.code.toJson) ++ mappedDetails
   }
 
-  private def mapDetails(details:Map[String, AnyRef]):Map[String, JsValue] = details.map {
+  private def mapDetails(details:Map[String, Any]):Map[String, JsValue] = details.map {
     case (key, det:Health) => (key, mapHealth(det).toJson)
     case (key, det:String) => (key, det.toJson)
+    case (key, det:Long) => (key, det.toJson)
     case (key, det:AnyRef) => (key, det.toString.toJson)
     case (key, _) => (key, "Could not serialize detail".toJson)
   }

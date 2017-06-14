@@ -1,4 +1,4 @@
-package akka.http.actuator.health
+package akka.http.actuate.health
 
 object HealthIndicator {
   var indicatorMap: Option[Map[String, HealthIndicator]] = None
@@ -11,7 +11,7 @@ trait HealthIndicator {
 
 case class Health(
   status:Status,
-  details:Option[Map[String, AnyRef]] = None) {
+  details:Option[Map[String, Any]] = None) {
 }
 
 object Status {

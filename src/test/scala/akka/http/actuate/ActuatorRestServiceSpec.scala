@@ -1,4 +1,4 @@
-package akka.http.actuator
+package akka.http.actuate
 
 import akka.http.scaladsl.server.Route
 import org.scalatest.{Matchers, WordSpec}

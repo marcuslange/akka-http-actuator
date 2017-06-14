@@ -1,6 +1,6 @@
-package akka.http.actuator.health
+package akka.http.actuate.health
 
-import akka.http.actuator.rest.HealthPort
+import akka.http.actuate.rest.HealthPort
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import org.scalatest.{Matchers, WordSpec}
@@ -8,7 +8,7 @@ import org.scalatest.{Matchers, WordSpec}
 class HealthPortSpec extends WordSpec with Matchers with ScalatestRouteTest {
   case class FakeIndicator(health:Health) extends HealthIndicator
   val fakeIndicatorUp = FakeIndicator(Health(Status.UP, Some(Map("ping"-> "1"))))
-  val fakeIndicatorDown = FakeIndicator(Health(Status.DOWN, Some(Map("ping"-> "2"))))
+  val fakeIndicatorDown = FakeIndicator(Health(Status.DOWN, Some(Map("ping"-> "2", "pong" -> 3, "zing" -> 200L))))
   object HealthPortFixture extends HealthPort
   val healthRoutes: Route = HealthPortFixture.healthRoute
 

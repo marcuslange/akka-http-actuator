@@ -1,4 +1,4 @@
-package akka.http.actuator.health
+package akka.http.actuate.health
 
 import akka.actor.{Actor, Props}
 

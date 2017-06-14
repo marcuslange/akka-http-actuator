@@ -1,4 +1,4 @@
-package akka.http.actuator.rest
+package akka.http.actuate.rest
 
 import akka.http.rest.hal.Link
 
